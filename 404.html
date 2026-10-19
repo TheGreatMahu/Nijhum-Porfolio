@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting</title>
+    <script>
+      const path = window.location.pathname.replace(/\/+$/, '');
+      const base = path.replace(/\/admin$/, '');
+      const hash = window.location.hash || '';
+      if (path.endsWith('/admin')) {
+        window.location.replace(base + '/#/admin');
+      } else if (hash.startsWith('#/admin')) {
+        window.location.replace(base + hash);
+      } else {
+        window.location.replace(base + '/');
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
