@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Md Ajmayeen Anjum Nijhum — Journalism Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Franklin:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3eee3;--card:#fbf8f1;--ink:#16130f;--mut:#6b6458;--red:#b3261e;--line:#16130f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#15130f;--card:#1e1b16;--ink:#efe9dc;--mut:#a39b8b;--red:#e0584f;--line:#efe9dc}}
+:root[data-theme=dark]{--bg:#15130f;--card:#1e1b16;--ink:#efe9dc;--mut:#a39b8b;--red:#e0584f;--line:#efe9dc}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 'Libre Franklin',system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.05;margin:0}
+#bar{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:var(--red);z-index:70}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+.strip{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:11px;letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid var(--line);padding:10px 0}
+.paper{text-align:center;font-size:clamp(38px,9vw,100px);font-weight:900;padding:18px 0 10px;border-bottom:4px double var(--line)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px 22px;overflow-x:auto;justify-content:center;padding:10px 20px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+nav a{text-decoration:none;color:inherit;border-bottom:2px solid transparent}nav a.on,nav a:hover{border-color:var(--red);color:var(--red)}
+.tick{display:flex;background:var(--ink);color:var(--bg);overflow:hidden;font-size:13px}.tick b{background:var(--red);color:#fff;padding:7px 14px;letter-spacing:.14em;z-index:1}
+.tick div{display:flex;white-space:nowrap;animation:mq 40s linear infinite;padding:7px 0}.tick span{padding:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;padding:48px 0 30px;align-items:center}
+.kick{color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;margin:0 0 10px}
+.name{font-size:clamp(44px,7vw,90px);font-weight:900}.name em{display:block;color:var(--red);font-style:normal}
+.role{font-size:18px;color:var(--mut);margin:14px 0}
+.obj::first-letter{float:left;font:900 64px/.8 'Playfair Display',serif;padding:6px 8px 0 0;color:var(--red)}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:3px 12px;font-size:12px;margin:4px 4px 0 0;display:inline-block}
+.ph{margin:0;transform:rotate(1.5deg);transition:.5s}.ph:hover{transform:none}
+.ph img,.ph0{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;filter:grayscale(1) contrast(1.1);transition:.6s;border:1px solid var(--line)}.ph:hover img{filter:none}
+.ph0{display:grid;place-content:center;text-align:center;border:2px dashed var(--mut);color:var(--mut);background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(128,128,128,.1) 10px 20px)}
+.ph0 small{display:block;font-size:12px}
+figcaption{font-size:12px;color:var(--mut);font-style:italic;border-top:1px solid var(--line);padding-top:6px;margin-top:6px}
+.sh{border-top:4px double var(--line);padding-top:12px;margin:64px 0 24px}.sh span{color:var(--red);font-size:12px;letter-spacing:.2em;text-transform:uppercase}.sh h2{font-size:clamp(30px,5vw,54px);font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{padding:22px;border:1px solid var(--line);margin:-1px 0 0 -1px;background:var(--card)}
+.card h3{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:10px}.card p{margin:4px 0}.card small{color:var(--mut)}
+.tl{list-style:none;padding:0;border-left:2px solid var(--red);margin:0 0 0 6px}.tl li{padding:0 0 20px 22px;position:relative}
+.tl li::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;background:var(--bg);border:2px solid var(--red);border-radius:50%}
+.tl span{float:right;color:var(--mut);font-size:13px}.tl i{display:block;color:var(--red);font-style:normal;font-weight:600;font-size:14px}.tl p{margin:2px 0 0;color:var(--mut)}
+.pill{background:var(--ink);color:var(--bg);font-size:10px;letter-spacing:.12em;padding:2px 8px;display:inline-block}
+.win{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--card);box-shadow:14px 14px 0 var(--ink);animation:fl 6s ease-in-out infinite;transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s}
+@keyframes fl{50%{translate:0 -8px}}
+.trk{display:flex;transition:transform .7s cubic-bezier(.7,0,.2,1)}.sl{flex:0 0 100%;margin:0}
+.sl img,.sl .ph0{aspect-ratio:16/9;filter:none;border:0;border-bottom:1px solid var(--line)}
+.sl figcaption{padding:16px 22px 56px;font-style:normal;color:var(--ink);border:0;margin:0;font-size:16px}.sl h3{font-size:26px}.sl p{margin:4px 0 0;color:var(--mut)}
+.win>button{position:absolute;top:35%;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:22px;cursor:pointer}.pv{left:12px}.nx{right:12px}
+.dots{position:absolute;bottom:18px;right:22px;display:flex;gap:8px}.dots i{width:10px;height:10px;border:1px solid var(--ink);border-radius:50%;cursor:pointer}.dots i.on{background:var(--red);border-color:var(--red)}
+.more{display:inline-block;margin-top:34px;padding:12px 26px;background:var(--red);color:#fff;text-decoration:none;letter-spacing:.12em;text-transform:uppercase;font-size:13px;transition:.3s;cursor:pointer}.more:hover{transform:translateX(6px)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}.cards .card{margin:0;transition:.3s}.cards .card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:6px 6px 0 var(--ink)}
+.cards h3{font-size:22px;letter-spacing:0;text-transform:none;color:var(--ink)}.cards a{color:var(--red)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s,transform .8s}.rv.in{opacity:1;transform:none}
+footer{border-top:4px double var(--line);margin-top:70px;padding:30px 0 50px;text-align:center}footer h2{font-size:clamp(28px,5vw,48px)}footer p{color:var(--mut)}footer a{color:var(--red)}
+.toast{position:fixed;left:50%;bottom:24px;translate:-50% 0;background:var(--ink);color:var(--bg);padding:10px 18px;z-index:90}
+.adm,.gate{max-width:900px;margin:0 auto;padding:20px}.atop{display:flex;justify-content:space-between;align-items:center;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:12px 0;border-bottom:1px solid var(--line);z-index:5}
+.adm label{display:block;font-size:12px;color:var(--mut);margin:8px 0}.adm input,.adm textarea{width:100%;padding:8px;background:var(--card);color:var(--ink);border:1px solid var(--line);font:inherit}
+.adm button{padding:7px 12px;background:var(--ink);color:var(--bg);border:0;cursor:pointer;margin:2px}.adm button[data-a=save]{background:var(--red);color:#fff}
+.box{border:1px solid var(--line);padding:14px;margin:14px 0;background:var(--card)}.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0 14px}.adm h3{margin-top:30px}.adm img{max-height:70px;display:block}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.win{box-shadow:6px 6px 0 var(--ink)}}
+</style></head><body>
+<div id="bar"></div><div id="app"></div>
+<script id="data" type="application/json">{}</script>
+<script>
+const ph=n=>Array.from({length:n},(_,i)=>({t:'Work title '+(i+1),d:'A short description of this work.',img:'',link:''}));
+const DEF={paper:'The Nijhum Dispatch',n1:'Md Ajmayeen',n2:'Anjum Nijhum',role:'Student, Mass Communication & Journalism · Bangladesh University of Professionals',photo:'',
+chips:['Communication','Leadership','Research','Creative Media','Writing'],
+obj:'Mass Communication and Journalism undergraduate at Bangladesh University of Professionals with experience in student leadership, content development, research, visual storytelling, and event coordination. Interested in journalism, media research, digital storytelling, and creative media, with a strong interest in developing practical newsroom and production experience.',
+cv:{contact:{email:'ajmayeenanjum@gmail.com',phone:'+880 1968 871757',loc:'Pallabi, Mirpur, Dhaka 1216',li:'linkedin.com/in/good2bnijhum'},
+edu:['Bangladesh University of Professionals|BSS, Mass Communication & Journalism|2024 – Present','Dhaka Residential Model College|HSC, Science · GPA 5.00|2020 – 2022'],
+langs:['Bangla|Native','English|Fluent','Hindi|Spoken'],
+skills:['Written Communication','Digital Literacy','Research & Analysis','Public Speaking','Video Editing','Microsoft Office','Photography & Graphic Design','Event Management'],
+interests:['Cinema & Film Studies','Literary Fiction','Music','Creative Writing','Media & Public Policy'],
+lead:['Executive Member, Department of Logistics|BUP Film Club|2026 – Present|Film theory workshops, visual storytelling and cinematography discussions; building video editing skills through club projects.',
+'Executive Member, Department of Creative Segment|BUP Islamic Society|2026 – Present|Planning and coordinating educational programs, communication and event management.',
+'Executive Member, Department of Cultural Affairs|BUP Literature and Drama Club|2025 – Present|Dramatic productions, literary discussions and scriptwriting initiatives.',
+'Executive Member, Department of Communication|BUP Entrepreneurship and Innovation Club|2025 – Present|Planning communication strategies for club events and campaigns with the Research, Events and Design teams.',
+'General Member, Department of Corporate Affairs|BUP Human Resource and Leadership Club|2025 – Present|Leadership workshops, HR case studies and organizational behavior seminars.'],
+ach:['FIRST PRIZE|Rabindra Sangeet Inter-School Cultural Competition|2020|Top honours among competing institutions for outstanding vocal performance.',
+'VOLUNTEER|Bangladesh Economics Olympiad|2025|Event logistics, participant coordination and on-ground operations for a prominent national academic competition.',
+'MEMBER|Disciplinary Committee, BUP Male Hall|2026|Supporting discipline, responsible conduct and a positive residential environment.'],
+proj:['Multimedia Documentary|Research, visual storytelling and video production.','Academic Research Paper|Research, analysis and academic writing on a media-related topic.','Photography & Graphic Design|Original photographic works and graphic designs.','Original Short Story|Short fiction shaping character, voice and narrative structure.']},
+segs:[{id:'documentary',title:'Documentary & Advertisements',kind:'slider',drive:'',items:ph(4)},{id:'research',title:'Academic Research',kind:'slider',drive:'',items:ph(4)},{id:'visuals',title:'Photography & Graphic Design',kind:'slider',drive:'',items:ph(5)},{id:'writing',title:'Writing',kind:'cards',drive:'',items:ph(3)}]};
+let D=Object.assign(DEF,JSON.parse(document.getElementById('data').textContent||'{}')),AS=null,mode='';
+const app=document.getElementById('app'),E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),
+U=u=>/^(https:|\/_blob\/|data:image)/.test(u||'')?E(u):'',P=a=>(a||[]).map(x=>x.split('|').map(s=>s.trim())),
+use=n=>window.claude?claude.use(n):Promise.resolve(null);
+function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2600)}
+function set(o,p,v){const k=p.split('.');let t=o;k.slice(0,-1).forEach(x=>t=t[x]);t[k[k.length-1]]=v}
+const img=(u,c)=>U(u)?`<img src="${U(u)}" alt="${E(c)}" loading="lazy">`:`<div class="ph0"><span>Image goes here<small>Add it in the admin panel</small></span></div>`;
+function slide(t){return `<figure class="sl">${img(t.img,t.t)}<figcaption><h3>${t.link?`<a href="${U(t.link)}" target="_blank" rel="noopener">${E(t.t)}</a>`:E(t.t)}</h3><p>${E(t.d)}</p></figcaption></figure>`}
+function site(){const c=D.cv,k=c.contact,tick=P(D.cv.ach).map(a=>`<span>★ ${E(a[1])} (${E(a[2])})</span>`).join('');
+app.innerHTML=`<div class="wrap"><header><div class="strip"><span>Vol. I · Dhaka, Bangladesh</span><span>${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}</span><span>Portfolio Edition</span></div><h1 class="paper">${E(D.paper)}</h1></header></div>
+<nav><a href="#top">Front page</a><a href="#about">Profile</a>${D.segs.map(s=>`<a href="#${E(s.id)}">${E(s.title)}</a>`).join('')}<a href="#contact">Contact</a></nav>
+<div class="tick"><b>BREAKING</b><div>${tick+tick+tick+tick}</div></div>
+<main class="wrap"><section class="hero" id="top"><div><p class="kick">Exclusive profile</p><h2 class="name">${E(D.n1)}<em>${E(D.n2)}</em></h2><p class="role">${E(D.role)}</p><p class="obj">${E(D.obj)}</p><div class="chips">${D.chips.map(x=>`<span>${E(x)}</span>`).join('')}</div></div>
+<figure class="ph">${U(D.photo)?`<img src="${U(D.photo)}" alt="${E(D.n1+' '+D.n2)}">`:`<div class="ph0"><span>His photo goes here<small>Admin → Basics → Hero photo</small></span></div>`}<figcaption>Fig. 1 — ${E(D.n1+' '+D.n2)}</figcaption></figure></section>
+<section id="about" class="rv"><div class="sh"><span>The Profile</span><h2>Background &amp; Credentials</h2></div>
+<div class="grid"><div class="card"><h3>Education</h3>${P(c.edu).map(e=>`<p><b>${E(e[0])}</b><br>${E(e[1])}<br><small>${E(e[2])}</small></p>`).join('')}</div>
+<div class="card"><h3>Languages</h3>${P(c.langs).map(l=>`<p>${E(l[0])} — <small>${E(l[1])}</small></p>`).join('')}<h3 style="margin-top:16px">Interests</h3>${c.interests.map(i=>`<p>${E(i)}</p>`).join('')}</div>
+<div class="card"><h3>Core skills</h3><div class="chips">${c.skills.map(x=>`<span>${E(x)}</span>`).join('')}</div></div></div>
+<div class="sh" style="margin-top:44px"><span>Campus Desk</span><h2>Leadership &amp; Activities</h2></div>
+<ul class="tl">${P(c.lead).map(l=>`<li><span>${E(l[2])}</span><b>${E(l[0])}</b><i>${E(l[1])}</i><p>${E(l[3])}</p></li>`).join('')}</ul>
+<div class="sh" style="margin-top:44px"><span>Honours</span><h2>Achievements &amp; Contributions</h2></div>
+<div class="grid">${P(c.ach).map(a=>`<div class="card"><span class="pill">${E(a[0])}</span> <small>${E(a[2])}</small><p><b>${E(a[1])}</b></p><p>${E(a[3])}</p></div>`).join('')}</div>
+<div class="sh" style="margin-top:44px"><span>Features</span><h2>Projects &amp; Creative Works</h2></div>
+<div class="cards">${P(c.proj).map((p,i)=>`<div class="card"><small>0${i+1}</small><h3>${E(p[0])}</h3><p>${E(p[1])}</p></div>`).join('')}</div></section>
+${D.segs.map((s,i)=>`<section class="rv" id="${E(s.id)}"><div class="sh"><span>Section ${String(i+1).padStart(2,'0')}</span><h2>${E(s.title)}</h2></div>
+${s.kind=='cards'?`<div class="cards">${s.items.map(t=>`<div class="card"><h3>${E(t.t)}</h3><p>${E(t.d)}</p>${t.link?`<a href="${U(t.link)}" target="_blank" rel="noopener">Read →</a>`:''}</div>`).join('')}</div>`
+:`<div class="win"><div class="trk">${s.items.map(slide).join('')}</div><button class="pv" aria-label="Previous">‹</button><button class="nx" aria-label="Next">›</button><div class="dots">${s.items.map(()=>'<i></i>').join('')}</div></div>`}
+${U(s.drive)?`<a class="more" href="${U(s.drive)}" target="_blank" rel="noopener">See more →</a>`:`<a class="more" data-a="nolink">See more →</a>`}</section>`).join('')}</main>
+<footer class="wrap" id="contact"><h2>Contact the newsroom</h2><p>${E(k.loc)}</p><p><a href="mailto:${E(k.email)}">${E(k.email)}</a> · ${E(k.phone)}</p><p>${E(k.li)}</p><p><small>© ${new Date().getFullYear()} ${E(D.n1+' '+D.n2)}</small></p></footer>`;wire()}
+function wire(){const io=new IntersectionObserver(es=>es.forEach(x=>x.isIntersecting&&x.target.classList.add('in')),{threshold:.08});app.querySelectorAll('.rv').forEach(x=>io.observe(x));
+const so=new IntersectionObserver(es=>es.forEach(x=>x.isIntersecting&&document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.hash=='#'+x.target.id))),{rootMargin:'-40% 0px -55%'});app.querySelectorAll('section[id]').forEach(x=>so.observe(x));
+app.querySelectorAll('.win').forEach(w=>{const t=w.querySelector('.trk'),ds=[...w.querySelectorAll('.dots i')],n=ds.length;let k=0,h,x0;
+const go=i=>{k=(i+n)%n;t.style.transform=`translateX(-${k*100}%)`;ds.forEach((d,j)=>d.classList.toggle('on',j==k))},run=()=>{clearInterval(h);h=setInterval(()=>go(k+1),4500)};
+w.querySelector('.pv').onclick=()=>go(k-1);w.querySelector('.nx').onclick=()=>go(k+1);ds.forEach((d,j)=>d.onclick=()=>go(j));
+w.onmouseenter=()=>clearInterval(h);w.onmouseleave=()=>{w.style.setProperty('--rx','0deg');w.style.setProperty('--ry','0deg');run()};
+w.onmousemove=e=>{const r=w.getBoundingClientRect();w.style.setProperty('--ry',((e.clientX-r.left)/r.width-.5)*4+'deg');w.style.setProperty('--rx',(.5-(e.clientY-r.top)/r.height)*3+'deg')};
+w.ontouchstart=e=>x0=e.touches[0].clientX;w.ontouchend=e=>{const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)go(k+(d<0?1:-1))};go(0);run()})}
+addEventListener('scroll',()=>{const b=document.getElementById('bar');b.style.width=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100+'%'},{passive:true});
+const F=(l,p,v)=>`<label>${l}<input data-p="${p}" value="${E(v)}"></label>`,
+LS=(l,p,a)=>`<label>${l} <small>(one per line; parts split by |)</small><textarea data-l="${p}" rows="${Math.max(3,a.length+1)}">${E(a.join('\n'))}</textarea></label>`,
+UP=(l,p,v)=>`<label>${l}${U(v)?`<img src="${U(v)}" alt="">`:''}<input data-p="${p}" value="${E(v)}" placeholder="Image URL, or upload below">${AS?`<input type="file" accept="image/*" data-up="${p}">`:''}</label>`;
+function draw(){const y=scrollY,c=D.cv,k=c.contact;app.innerHTML=`<div class="adm"><div class="atop"><b>Admin · ${E(D.paper)}</b><span><button data-a="save">Save &amp; publish</button> <a href="#/">View site</a></span></div>
+<h3>Basics</h3><div class="g">${F('Paper name','paper',D.paper)}${F('Name line 1','n1',D.n1)}${F('Name line 2','n2',D.n2)}${F('Role','role',D.role)}${F('Email','cv.contact.email',k.email)}${F('Phone','cv.contact.phone',k.phone)}${F('Location','cv.contact.loc',k.loc)}${F('LinkedIn','cv.contact.li',k.li)}</div>
+<label>Objective<textarea data-p="obj" rows="4">${E(D.obj)}</textarea></label>${UP('Hero photo','photo',D.photo)}${LS('Header chips','chips',D.chips)}
+<h3>CV sections</h3>${LS('Education: school|degree|period','cv.edu',c.edu)}${LS('Languages: name|level','cv.langs',c.langs)}${LS('Skills','cv.skills',c.skills)}${LS('Interests','cv.interests',c.interests)}${LS('Leadership: role|organisation|period|details','cv.lead',c.lead)}${LS('Achievements: tag|title|year|details','cv.ach',c.ach)}${LS('Projects: title|description','cv.proj',c.proj)}
+<h3>Segments</h3>${D.segs.map((s,i)=>`<div class="box"><div class="g">${F('Segment title',`segs.${i}.title`,s.title)}${F('Drive link (See more)',`segs.${i}.drive`,s.drive)}</div>
+<button data-a="mv" data-i="${i}" data-d="-1">↑ Up</button><button data-a="mv" data-i="${i}" data-d="1">↓ Down</button><button data-a="ds" data-i="${i}">Delete segment</button> <small>${s.kind=='cards'?'Cards layout':'Sliding window'}</small>
+${s.items.map((t,j)=>`<div class="box"><div class="g">${F('Title',`segs.${i}.items.${j}.t`,t.t)}${F('Description',`segs.${i}.items.${j}.d`,t.d)}${F('Link (optional)',`segs.${i}.items.${j}.link`,t.link)}${s.kind=='cards'?'':UP('Image',`segs.${i}.items.${j}.img`,t.img)}</div><button data-a="di" data-i="${i}" data-j="${j}">Delete item</button></div>`).join('')}
+<button data-a="ai" data-i="${i}">+ Add item</button></div>`).join('')}<button data-a="addseg">+ Add sliding segment</button><button data-a="addcards">+ Add cards segment</button></div>`;scrollTo(0,y)}
+async function admin(){const u=await use('user');if(!u||!u.canEdit()){app.innerHTML='<div class="gate"><h2>Editors only</h2><p>Open this page while signed in to claude.ai with edit access to manage the portfolio.</p><a href="#/">← Back to site</a></div>';return}AS=await use('assets');draw()}
+async function save(){const a=await use('artifact');if(!a)return toast('Publishing is unavailable here');const c=document.documentElement.cloneNode(true);c.querySelector('#app').innerHTML='';c.querySelector('#bar').removeAttribute('style');c.querySelectorAll('.toast').forEach(x=>x.remove());c.querySelector('#data').textContent=JSON.stringify(D).replace(/</g,'\\u003c');
+try{await a.publish('<!doctype html>\n'+c.outerHTML)}catch(e){toast('Save failed: '+(e.code||'try again'))}}
+app.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,i=+b.dataset.i,j=+b.dataset.j,S=D.segs;
+if(a=='nolink')return toast('Drive link not added yet');if(a=='save')return save();
+if(a=='addseg'||a=='addcards')S.push({id:'s'+Date.now(),title:'New segment',kind:a=='addseg'?'slider':'cards',drive:'',items:ph(3)});
+if(a=='ds'&&confirm('Delete this segment?'))S.splice(i,1);if(a=='mv'){const k=i+ +b.dataset.d;if(S[k])[S[i],S[k]]=[S[k],S[i]]}
+if(a=='ai')S[i].items.push(...ph(1));if(a=='di')S[i].items.splice(j,1);draw()};
+app.oninput=e=>{const t=e.target,p=t.dataset.p||t.dataset.l;if(p)set(D,p,t.dataset.l?t.value.split('\n').filter(s=>s.trim()):t.value)};
+app.onchange=async e=>{const f=e.target.files&&e.target.files[0],p=e.target.dataset.up;if(!f||!p)return;try{const r=await AS.upload(f);set(D,p,r.url);draw()}catch(x){toast('Upload failed')}};
+function route(){const m=location.hash.startsWith('#/admin')?'a':'s';if(m==mode&&m=='s')return;mode=m;scrollTo(0,0);m=='a'?admin():site()}
+addEventListener('hashchange',route);route();
+</script></body></html>
