@@ -57,6 +57,8 @@ footer{border-top:4px double var(--line);margin-top:70px;padding:30px 0 50px;tex
 @media(max-width:800px){.hero{grid-template-columns:1fr}.win{box-shadow:6px 6px 0 var(--ink)}}
 </style></head><body>
 <div id="bar"></div><div id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="./supabase-config.js"></script>
 <script id="data" type="application/json">{}</script>
 <script>
 const ph=n=>Array.from({length:n},(_,i)=>({t:'Work title '+(i+1),d:'A short description of this work.',img:'',link:''}));
@@ -78,23 +80,32 @@ ach:['FIRST PRIZE|Rabindra Sangeet Inter-School Cultural Competition|2020|Top ho
 'MEMBER|Disciplinary Committee, BUP Male Hall|2026|Supporting discipline, responsible conduct and a positive residential environment.'],
 proj:['Multimedia Documentary|Research, visual storytelling and video production.','Academic Research Paper|Research, analysis and academic writing on a media-related topic.','Photography & Graphic Design|Original photographic works and graphic designs.','Original Short Story|Short fiction shaping character, voice and narrative structure.']},
 segs:[{id:'documentary',title:'Documentary & Advertisements',kind:'slider',drive:'',items:ph(4)},{id:'research',title:'Academic Research',kind:'slider',drive:'',items:ph(4)},{id:'visuals',title:'Photography & Graphic Design',kind:'slider',drive:'',items:ph(5)},{id:'writing',title:'Writing',kind:'cards',drive:'',items:ph(3)}]};
-const STORAGE_KEY='nijhum-portfolio-data-v1';
-const AUTH_KEY='nijhum-admin-session';
-const ADMIN_USER='nijhum';
-const ADMIN_PASS='Nijhum@69@bup';
-let D=loadData(),AS=null,mode='';
+const STORAGE_BUCKET='portfolio-assets';
+const SUPABASE_CONFIG=window.PORTFOLIO_SUPABASE_CONFIG||{};
+const db=window.supabase&&SUPABASE_CONFIG.url&&SUPABASE_CONFIG.anonKey&&
+  !SUPABASE_CONFIG.url.includes('YOUR_PROJECT')&&!SUPABASE_CONFIG.anonKey.includes('YOUR_')
+  ?window.supabase.createClient(SUPABASE_CONFIG.url,SUPABASE_CONFIG.anonKey):null;
+let D=JSON.parse(JSON.stringify(DEF)),AS=null,mode='',saveTimer;
 const app=document.getElementById('app'),E=s=>String(s??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])),
 U=u=>/^(https:|\/_blob\/|data:image)/.test(u||'')?E(u):'',P=a=>(a||[]).map(x=>x.split('|').map(s=>s.trim()));
-function loadData(){
-  try {
-    const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
-    if(saved&&saved.paper){ return Object.assign(JSON.parse(JSON.stringify(DEF)),saved); }
-  } catch (e) {}
+async function loadData(){
+  if(!db)return JSON.parse(JSON.stringify(DEF));
+  const {data,error}=await db.from('portfolio_content').select('content').eq('id','main').maybeSingle();
+  if(error)throw error;
+  if(data&&data.content)return Object.assign(JSON.parse(JSON.stringify(DEF)),data.content);
   return JSON.parse(JSON.stringify(DEF));
 }
-function saveData(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(D)); }
-function isAdminAuthenticated(){ return sessionStorage.getItem(AUTH_KEY)==='true'; }
-function setAdminAuthenticated(v){ sessionStorage.setItem(AUTH_KEY,String(!!v)); }
+async function saveData(){
+  if(!db)throw new Error('Supabase is not configured.');
+  const {error}=await db.from('portfolio_content').upsert({id:'main',content:D,updated_at:new Date().toISOString()});
+  if(error)throw error;
+}
+async function isAdminAuthenticated(){
+  if(!db)return false;
+  const {data,error}=await db.auth.getUser();
+  return !error&&data.user?.app_metadata?.role==='admin';
+}
+function scheduleSave(){clearTimeout(saveTimer);saveTimer=setTimeout(async()=>{try{if(await isAdminAuthenticated())await saveData()}catch(e){toast(`Could not save: ${e.message}`)}},900)}
 function isAdminPath(){
   const path=(location.pathname||'').toLowerCase();
   const hash=(location.hash||'').toLowerCase();
@@ -146,31 +157,32 @@ function draw(){const y=scrollY,c=D.cv,k=c.contact;app.innerHTML=`<div class="ad
 ${s.items.map((t,j)=>`<div class="box"><div class="g">${F('Title',`segs.${i}.items.${j}.t`,t.t)}${F('Description',`segs.${i}.items.${j}.d`,t.d)}${F('Link (optional)',`segs.${i}.items.${j}.link`,t.link)}${s.kind=='cards'?'':UP('Image',`segs.${i}.items.${j}.img`,t.img)}</div><button data-a="di" data-i="${i}" data-j="${j}">Delete item</button></div>`).join('')}
 <button data-a="ai" data-i="${i}">+ Add item</button></div>`).join('')}<button data-a="addseg">+ Add sliding segment</button><button data-a="addcards">+ Add cards segment</button></div>`;scrollTo(0,y)}
 function showLogin(){
-  app.innerHTML=`<div class="gate"><div class="auth-box"><h2>Admin access</h2><form id="admin-login"><div class="row"><label><input type="text" id="admin-user" placeholder="Username" required></label></div><div class="row"><label><input type="password" id="admin-pass" placeholder="Password" required></label></div><button type="submit">Login</button><div class="auth-note">Use the direct admin URL to access this editor.</div></form></div></div>`;
+  if(!db){app.innerHTML=`<div class="gate"><div class="auth-box"><h2>Admin setup required</h2><p>Configure the Supabase project URL and public anon key in supabase-config.js to enable shared editing.</p></div></div>`;return;}
+  app.innerHTML=`<div class="gate"><div class="auth-box"><h2>Admin access</h2><form id="admin-login"><div class="row"><label><input type="email" id="admin-email" placeholder="Admin email" required></label></div><div class="row"><label><input type="password" id="admin-pass" placeholder="Password" required></label></div><button type="submit">Login</button><div class="auth-note">Sign in with the admin account configured for this portfolio.</div></form></div></div>`;
   setTimeout(()=>{
     const form=document.getElementById('admin-login');
     form&&form.addEventListener('submit',function(e){
       e.preventDefault();
-      const username=document.getElementById('admin-user').value.trim();
+      const email=document.getElementById('admin-email').value.trim();
       const password=document.getElementById('admin-pass').value;
-      if(username===ADMIN_USER&&password===ADMIN_PASS){
-        setAdminAuthenticated(true);
+      db.auth.signInWithPassword({email,password}).then(async({error})=>{
+        if(error){toast('Sign-in failed. Check your email and password.');return;}
+        if(!(await isAdminAuthenticated())){await db.auth.signOut();toast('This account is not authorized to edit this portfolio.');return;}
         route();
-      } else {
-        toast('Invalid credentials');
-      }
+      }).catch(error=>toast(`Sign-in failed: ${error.message}`));
     });
   },0);
 }
-function admin(){if(!isAdminAuthenticated()){showLogin();return;}draw()}
-function save(){saveData();toast('Portfolio saved locally');route();}
+async function admin(){if(!(await isAdminAuthenticated())){showLogin();return;}draw()}
+async function save(){try{await saveData();toast('Portfolio saved for all visitors');route();}catch(error){toast(`Save failed: ${error.message}`)}}
 app.onclick=e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,i=+b.dataset.i,j=+b.dataset.j,S=D.segs;
-if(a=='nolink')return toast('Drive link not added yet');if(a=='save')return save();if(a=='logout'){setAdminAuthenticated(false);route();return;}
+if(a=='nolink')return toast('Drive link not added yet');if(a=='save')return save();if(a=='logout'){db.auth.signOut().then(route);return;}
 if(a=='addseg'||a=='addcards')S.push({id:'s'+Date.now(),title:'New segment',kind:a=='addseg'?'slider':'cards',drive:'',items:ph(3)});
 if(a=='ds'&&confirm('Delete this segment?'))S.splice(i,1);if(a=='mv'){const k=i+ +b.dataset.d;if(S[k])[S[i],S[k]]=[S[k],S[i]]}
-if(a=='ai')S[i].items.push(...ph(1));if(a=='di')S[i].items.splice(j,1);draw()};
-app.oninput=e=>{const t=e.target,p=t.dataset.p||t.dataset.l;if(p){const value=t.dataset.l?t.value.split('\n').filter(s=>s.trim()):t.value;set(D,p,value);saveData();}};
-app.onchange=e=>{const f=e.target.files&&e.target.files[0],p=e.target.dataset.up;if(!f||!p)return;const reader=new FileReader();reader.onload=()=>{set(D,p,reader.result);saveData();draw();};reader.readAsDataURL(f);};
-function route(){const adminRequested=isAdminPath();mode=adminRequested?'admin':'site';if(adminRequested){if(isAdminAuthenticated())draw();else showLogin();}else{site();}}
+if(a=='ai')S[i].items.push(...ph(1));if(a=='di')S[i].items.splice(j,1);draw();scheduleSave()};
+app.oninput=e=>{const t=e.target,p=t.dataset.p||t.dataset.l;if(p){const value=t.dataset.l?t.value.split('\n').filter(s=>s.trim()):t.value;set(D,p,value);scheduleSave();}};
+app.onchange=async e=>{const f=e.target.files&&e.target.files[0],p=e.target.dataset.up;if(!f||!p)return;if(!db){toast('Supabase is not configured.');return;}try{const filePath=`${crypto.randomUUID()}-${f.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`;const{error}=await db.storage.from(STORAGE_BUCKET).upload(filePath,f,{upsert:true});if(error)throw error;const{data}=db.storage.from(STORAGE_BUCKET).getPublicUrl(filePath);set(D,p,data.publicUrl);draw();await saveData();toast('Image uploaded and saved for all visitors');}catch(error){toast(`Image upload failed: ${error.message}`)}};
+let lastRouteWasAdmin=null;
+async function route(){const adminRequested=isAdminPath();if(!adminRequested&&lastRouteWasAdmin===false)return;lastRouteWasAdmin=adminRequested;mode=adminRequested?'admin':'site';try{D=await loadData();if(adminRequested){await admin();return;}site()}catch(error){if(adminRequested)showLogin();else site();toast(`Could not load shared content: ${error.message}`)}}
 addEventListener('hashchange',route);route();
 </script></body></html>

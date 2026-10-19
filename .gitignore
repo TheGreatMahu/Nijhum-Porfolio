@@ -1,0 +1,2 @@
+# Local Supabase project configuration; the deploy workflow generates this file.
+/supabase-config.js

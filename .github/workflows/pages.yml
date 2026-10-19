@@ -23,6 +23,22 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Add public Supabase configuration
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const config = {
+            url: process.env.SUPABASE_URL,
+            anonKey: process.env.SUPABASE_ANON_KEY
+          };
+          fs.writeFileSync(
+            'supabase-config.js',
+            `window.PORTFOLIO_SUPABASE_CONFIG = ${JSON.stringify(config, null, 2)};\n`
+          );
+          NODE
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload site files
