@@ -58,3 +58,6 @@ Supabase row-level security.
 Open `https://thegreatmahu.github.io/Nijhum-Porfolio/admin` and sign in with the Supabase
 admin user's email and password. Changes save to the shared database; uploaded images are
 stored in the public `portfolio-assets` bucket.
+
+After database setup and deployment, sign in on the device that contains the old browser-only
+edits and use **Import this device’s saved portfolio** once to copy that content to Supabase.

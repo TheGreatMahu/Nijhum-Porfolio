@@ -34,6 +34,9 @@ jobs:
             url: process.env.SUPABASE_URL,
             anonKey: process.env.SUPABASE_ANON_KEY
           };
+          if (!config.url || !config.anonKey) {
+            throw new Error('Set the SUPABASE_URL and SUPABASE_ANON_KEY repository variables before deploying.');
+          }
           fs.writeFileSync(
             'supabase-config.js',
             `window.PORTFOLIO_SUPABASE_CONFIG = ${JSON.stringify(config, null, 2)};\n`
